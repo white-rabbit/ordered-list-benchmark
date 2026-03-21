@@ -53,22 +53,11 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-Additionally, the `hyperfine` tool is required for benchmarking. Install it via:
-
-```bash
-pip install hyperfine  # if available via pip
-# OR see: https://github.com/sharkdp/hyperfine for other installation methods
-```
+Additionally, the `hyperfine` tool is required for benchmarking.
 
 ## Running Benchmarks
 
-There are two main ways to run benchmarks:
-
-1. **Shell script**: Run all benchmarks as a batch.
-    ```bash
-    ./run_benchmark.sh
-    ```
-2. **Flexible Python script**: Use `benchmark.py` to customize parameter ranges. This is the recommended way:
+**Python script**: Use `benchmark.py` to customize parameter ranges.:
     ```bash
     python benchmark.py --min 10 --max 1000
     ```
@@ -78,6 +67,6 @@ The benchmarking system will store output in timestamped files in the `output/` 
 
 ## Report Generation
 
-After running benchmarks, generate interactive HTML reports using the included Python scripts (such as `make_report.py` or `make_staticdash_report.py`). Reports group and visualize benchmark results by platform/CPU, parameter range, and implementation. The staticdash report uses Plotly for interactive visualization and organizes results by size range, date, and machine.
+After running benchmarks, generate interactive HTML reports using the `make_report.py`. Reports group and visualize benchmark results by platform/CPU, parameter range, and implementation. The staticdash report uses Plotly for interactive visualization and organizes results by size range, date, and machine.
 
-All reports are generated in the `report/` directory for review and sharing.
+All reports are generated in the `docs/` directory for review and sharing.
