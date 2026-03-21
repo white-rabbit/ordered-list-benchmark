@@ -43,11 +43,41 @@ make
 # The executable 'sortedlist' will be created in the build directory
 ```
 
-## Running Benchmarks
+### Python Scripts and Environment
+
+Python scripts are used for running and visualizing benchmarks and generating summary reports. It is recommended to use a virtual environment:
 
 ```bash
-# Test with specific implementation and parameter size
-./sortedlist array 100      # Test naive array approach with 100 elements
-./sortedlist binary 100     # Test binary search approach with 100 elements
-./sortedlist set 100        # Test std::set approach with 100 elements
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
 ```
+
+Additionally, the `hyperfine` tool is required for benchmarking. Install it via:
+
+```bash
+pip install hyperfine  # if available via pip
+# OR see: https://github.com/sharkdp/hyperfine for other installation methods
+```
+
+## Running Benchmarks
+
+There are two main ways to run benchmarks:
+
+1. **Shell script**: Run all benchmarks as a batch.
+    ```bash
+    ./run_benchmark.sh
+    ```
+2. **Flexible Python script**: Use `benchmark.py` to customize parameter ranges. This is the recommended way:
+    ```bash
+    python benchmark.py --min 10 --max 1000
+    ```
+    This will run all implementations over a set of 10 datapoints across your specified parameter range.
+
+The benchmarking system will store output in timestamped files in the `output/` directory, so previous results are preserved.
+
+## Report Generation
+
+After running benchmarks, generate interactive HTML reports using the included Python scripts (such as `make_report.py` or `make_staticdash_report.py`). Reports group and visualize benchmark results by platform/CPU, parameter range, and implementation. The staticdash report uses Plotly for interactive visualization and organizes results by size range, date, and machine.
+
+All reports are generated in the `report/` directory for review and sharing.

@@ -2,7 +2,6 @@
 """
 Generates a static HTML benchmark report using staticdash.Dashboard and Plotly.
 Scans output/*.csv and matching .json for metadata, separates sections by platform/CPU.
-Minimal but well-structured report, using default staticdash theme, and modular code.
 """
 
 import os
@@ -16,7 +15,7 @@ from plotly import graph_objs as go
 from staticdash import Dashboard, Page
 
 OUTPUT_DIR = Path("output")
-REPORT_DIR = Path("report")
+REPORT_DIR = Path("docs")
 REPORT_DIR.mkdir(exist_ok=True)
 
 
