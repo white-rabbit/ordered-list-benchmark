@@ -50,7 +50,7 @@ int main(int argc, char **argv) {
     }
 
     int size = -1;
-    int updateCount = 10'000'000;
+    int updateCount = 1'000'000;
 
     std::string structType = argv[1];
     size = std::atoi(argv[2]);
