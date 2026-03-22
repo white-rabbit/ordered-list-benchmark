@@ -10,6 +10,7 @@ Usage:
     python3 benchmark.py --min 10 --max 100
 """
 
+import argparse
 import platform
 import subprocess
 import json
@@ -99,6 +100,7 @@ def sanitize_filename(text):
     # Remove/replace problematic characters
     replacements = {
         " ": "_",
+        ".": "_",
         "(": "",
         ")": "",
         "/": "_",
@@ -110,6 +112,7 @@ def sanitize_filename(text):
         "<": "",
         ">": "",
         "|": "",
+        "@": "",
     }
     result = text
     for char, replacement in replacements.items():
@@ -139,9 +142,6 @@ def build_benchmark_commands(parameter_sizes):
             commands.append(cmd)
 
     return commands
-
-
-import argparse
 
 
 def main():
