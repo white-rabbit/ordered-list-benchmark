@@ -43,7 +43,7 @@ void simulate(T &list, int size, int updateCount, int maxValue) {
 
     assert_sorted(list);
 
-    print_list(list);
+    //print_list(list);
 }
 
 int main(int argc, char **argv) {

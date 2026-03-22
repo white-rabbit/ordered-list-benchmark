@@ -108,6 +108,9 @@ def group_benchmarks(benchmarks):
     # cpu_type => list of benchmarks
     group = {}
 
+    # sort benchmarks by range, so that smaller ranges appear first
+    benchmarks.sort(key=lambda b: b.param_range)
+
     for benchmark in benchmarks:
         cpu_type = (benchmark.platform, benchmark.cpu)
         if cpu_type not in group:

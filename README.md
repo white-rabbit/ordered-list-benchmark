@@ -37,23 +37,46 @@ cd build
 # Configure with CMake
 cmake ..
 
-# Compile
+# Compile (Linux/Mac)
 make
+
+# Compile (Windows)
+cmake --build .
 
 # The executable 'sortedlist' will be created in the build directory
 ```
 
 ### Python Scripts and Environment
 
-Python scripts are used for running and visualizing benchmarks and generating summary reports. It is recommended to use a virtual environment:
+Python scripts are used for running and visualizing benchmarks and generating
+summary reports. It is recommended to use a virtual environment:
 
 ```bash
 python3 -m venv venv
 source venv/bin/activate
-pip install -r requirements.txt
+python3 -m pip install -r requirements.txt
 ```
 
+On Windows:
+```bash
+python3 -m venv venv
+venv\Scripts\activate
+python3 -m pip install -r requirements.txt
+```
+
+
 Additionally, the `hyperfine` tool is required for benchmarking.
+
+```bash
+brew install hyperfine
+```
+
+on Windows can be installed with ```scoop``` or any other package manager:
+
+```bash
+scoop install hyperfine
+```
+
 
 ## Running Benchmarks
 

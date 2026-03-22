@@ -20,8 +20,13 @@ from datetime import datetime
 
 
 # Configuration
-BINARY_NAME = "sortedlist"
-BUILD_DIR = Path("build")
+if platform.system() == 'Windows':
+    BINARY_NAME = "sortedlist.exe"
+    BUILD_DIR = Path("build/Release")
+else:
+    BINARY_NAME = "sortedlist"
+    BUILD_DIR = Path("build")
+
 IMPLEMENTATIONS = ["array", "binary", "set"]
 DEFAULT_RUNS = 40
 DEFAULT_WARMUP = 5
@@ -86,7 +91,8 @@ def get_cpu_model(system):
                 )
                 lines = result.stdout.strip().split("\n")
                 if len(lines) > 1:
-                    return lines[1].strip()
+                    return ''.join(l.strip() for l in lines[1:])
+
             except FileNotFoundError:
                 pass
 
